@@ -1,0 +1,99 @@
+/*!
+Theme Name: mswpsandoxthme
+Author: Michael Reeves
+Author URI: http://www.msreeves.co.uk/
+Description: Description
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: mswpsandoxthme
+*/
+
+article.post .entry-content p:first-of-type:first-letter {
+    font-size: 8.5rem;
+    font-weight: bold;
+    color: var(--main-red);
+}
+
+.post .listing-image {
+    overflow: hidden;
+}
+
+.post .listing-image img {
+    transition: transform .5s ease;
+}
+
+.post .listing-image:hover img {
+    transform: scale(1.5);
+}
+
+.featured-media-inner img {
+    margin: 0;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    height: 100vh;
+}
+
+figure.featured-media {
+    margin: 0;
+}
+
+.entry-header {
+    max-width: 72rem;
+    width: calc(100% - 4rem);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.entry-content {
+    max-width: 58rem;
+    width: calc(100% - 4rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.entry-content p {
+    font-size: 1.6rem;
+    line-height: 1.476;
+}
+
+.listing-panel {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.listing-panel span {
+    background-color: #C21E56;
+    color: #fff;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+}
+
+.listing-sponsored-panel {
+    padding: 10px;
+}
+
+.listing-sponsored-panel h3,
+.listing-sponsored-panel p {
+    color: #C21E56;
+}
+
+.listing-text {
+    padding: 20px;
+}
+
+.listing-image img {
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    height: 60vh;
+}
+
+
