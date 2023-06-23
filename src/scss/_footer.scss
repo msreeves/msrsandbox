@@ -1,0 +1,12 @@
+footer {
+    width: 100%;
+    padding: 1.5em 0 1.5em 0;
+    text-align: center;
+    .navbar-nav {
+        a {
+            font-family: $header-text;
+            letter-spacing: 0.04em;
+            padding: 0.7rem;
+        }
+    }
+}

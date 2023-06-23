@@ -1,0 +1,10 @@
+$theme-colors: (
+    "primary": #cd2653,
+);
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'base';
+@import 'variables';
+@import 'header';
+@import 'content';
+@import 'footer';
