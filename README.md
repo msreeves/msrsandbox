@@ -1,6 +1,6 @@
 This is my MSR Sandbox theme created from scratch files in Wordpress
 
-Here is a Wordpress Sandbox website I am currently playing around with learning how they are structured, I have been using a theme of twenty twenty, I have though been restructuring the templates to tackle various challenges like:
+Here is a Wordpress Sandbox website I am currently playing around with learning how they are structured, I have been using working the site to include:
 
 - Creating Custom Posts
 - Post listings and filtering by categories
