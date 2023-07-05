@@ -1,32 +1,66 @@
 body {
-    background-color: #f2f2f2 !important;
+    background-color: $grey;
     margin: 0;
-}
-
-p,
-span {
-    font-family: $body-text;
-}
-
-body,
-button,
-input,
-select,
-optgroup,
-textarea {
-    color: #404040;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    color: $black;
     font-size: 1rem;
     line-height: 1.5;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li.js-filter-item button {
+p {
+    font-family: $body-text;
+    margin-bottom: 1.5em;
+}
+
+span {
+    font-family: $body-text;
+}
+
+button {
+    color: $grey;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+input {
+    color: $grey;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+select {
+    color: $grey;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+optgroup {
+    color: $grey;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+textarea {
+    color: $grey;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+h1 {
+    font-family: $header-text;
+    letter-spacing: 0.04em;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    font-size: 3.6rem;
+    text-align: center;
+}
+
+h2 {
     font-family: $header-text;
     letter-spacing: 0.04em;
     font-weight: 800;
@@ -34,32 +68,66 @@ li.js-filter-item button {
     margin-bottom: 1rem;
 }
 
-h1 {
-    font-size: 3.6rem;
-    text-align: center;
-}
-
-p {
-    margin-bottom: 1.5em;
-}
-
-.advert p {
-    font-size: 1.2rem;
-    text-decoration-line: underline;
-    text-decoration-style: double;
+h3 {
+    font-family: $header-text;
+    letter-spacing: 0.04em;
     font-weight: 800;
-    color: $primary;
-    cursor: pointer;
-    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+h4 {
+    font-family: $header-text;
+    letter-spacing: 0.04em;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+h5 {
+    font-family: $header-text;
+    letter-spacing: 0.04em;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+h6 {
+    font-family: $header-text;
+    letter-spacing: 0.04em;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.advert {
+    p {
+        font-size: 1.2rem;
+        text-decoration-line: underline;
+        text-decoration-style: double;
+        font-weight: 800;
+        color: $primary;
+        cursor: pointer;
+        text-align: center;
+    }
 }
 
 .search-highlight {
-    background: #FFFF00;
+    background: $yellow;
 }
 
-dfn,
-cite,
-em,
+dfn {
+    font-style: italic;
+}
+
+cite {
+    font-style: italic;
+}
+
+em {
+    font-style: italic;
+}
+
 i {
     font-style: italic;
 }
@@ -82,20 +150,37 @@ pre {
     padding: 1.6em;
 }
 
-code,
-kbd,
-tt,
+code {
+    font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+kbd {
+    font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+tt {
+    font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
 var {
     font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 }
 
-abbr,
+abbr {
+    border-bottom: 1px dotted #666;
+    cursor: help;
+}
+
 acronym {
     border-bottom: 1px dotted #666;
     cursor: help;
 }
 
-mark,
+mark {
+    background: #fff9c0;
+    text-decoration: none;
+}
+
 ins {
     background: #fff9c0;
     text-decoration: none;
@@ -105,34 +190,33 @@ big {
     font-size: 125%;
 }
 
-/* Elements
---------------------------------------------- */
-
-
 hr {
-    background-color: #ccc;
+    background-color: $grey;
     border: 0;
     height: 1px;
     margin-bottom: 1.5em;
 }
 
-ul,
-ol {
-    margin: 0 0 1.5em 3em;
-}
-
 ul {
+    margin: 0 0 1.5em 3em;
     list-style: disc;
 }
 
 ol {
+    margin: 0 0 1.5em 3em;
     list-style: decimal;
 }
 
-li>ul,
-li>ol {
-    margin-bottom: 0;
-    margin-left: 1.5em;
+li {
+    >ul {
+        margin-bottom: 0;
+        margin-left: 1.5em;
+    }
+
+    >ol {
+        margin-bottom: 0;
+        margin-left: 1.5em;
+    }
 }
 
 dt {
@@ -143,9 +227,14 @@ dd {
     margin: 0 1.5em 1.5em;
 }
 
-/* Make sure embeds and iframes fit their containers. */
-embed,
-iframe,
+embed {
+    max-width: 100%;
+}
+
+iframe {
+    max-width: 100%;
+}
+
 object {
     max-width: 100%;
 }
@@ -164,8 +253,6 @@ table {
     width: 100%;
 }
 
-/* Links
---------------------------------------------- */
 a {
     color: $primary;
 
@@ -173,39 +260,38 @@ a {
         color: $black;
     }
 
-    &:hover {
-        color: $black;
-        outline: 0;
-    }
+    & {
+        &:hover {
+            color: $black;
+            outline: 0;
+        }
 
-    &:focus {
-        color: $black;
-        outline: thin dotted;
-    }
+        &:focus {
+            color: $black;
+            outline: thin dotted;
+        }
 
-    &:active {
-        color: $black;
-        outline: 0;
+        &:active {
+            color: $black;
+            outline: 0;
+        }
     }
 }
+    .wp-caption {
+        margin-bottom: 1.5em;
+        max-width: 100%;
 
-/* Captions
---------------------------------------------- */
-.wp-caption {
-    margin-bottom: 1.5em;
-    max-width: 100%;
+        img[class*="wp-image-"] {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    img[class*="wp-image-"] {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        .wp-caption-text {
+            text-align: center;
+        }
     }
 
     .wp-caption-text {
         margin: 0.8075em 0;
     }
-}
-
-.wp-caption-text {
-    text-align: center;
-}

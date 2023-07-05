@@ -1,8 +1,8 @@
-     <div class="col-sm-6"> 
+     <div class="col-md-6"> 
        <?php the_post_thumbnail(); ?>
     </div>
-     <div class="col-sm-6">
-        <div class="center-column event__panel">
+     <div class="col-md-6">
+        <div class="panel ">
             <div class="my-auto text-center">
         			    <h1><?php the_title(); ?></h1>			  	                 
 						<?php if ( get_field('event_date') ) : ?>

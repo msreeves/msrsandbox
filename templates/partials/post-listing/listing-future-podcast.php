@@ -17,7 +17,7 @@ foreach ( $podcaster_terms as $podcaster_term ) {
     ?>
 
     <h2><?php echo $podcaster_term->name; ?></h2>
-    <div class="center-column event__panel">
+    <div class="panel ">
             <div class="my-auto">
     <?php
     if ( $podcaster_query->have_posts() ) : while ( $podcaster_query->have_posts() ) : $podcaster_query->the_post(); ?>

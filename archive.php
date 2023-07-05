@@ -16,20 +16,22 @@ get_header();
 
 			<header class="page-header">
 				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
+				single_cat_title( '<h1 class="page-title">', '</h1>' );
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
 
 			<?php
 			/* Start the Loop */
+			echo '<div class="container">';
+			echo '<div class="row">';
 			while ( have_posts() ) :
 				the_post();
-
 				get_template_part( 'templates/partials/post-listing/listing-posts' );
                 
 			endwhile;
-
+			echo '</div>';
+			echo '</div>';
 			the_posts_navigation();
 
 		else :

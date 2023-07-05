@@ -16,8 +16,8 @@
 <article <?php post_class(); ?> id="post-people<?php the_ID(); ?>">
 <div class="container">
 	<div class="row">
-		<div class="col-sm-6">
-			<div class="center-column">
+		<div class="col-md-6">
+			<div class="panel">
 		<?php the_title( '<h1>', '</h1>' ); ?>
 
 	<div class="post-inner">
@@ -43,7 +43,7 @@
 	</div><!-- .post-inner -->
 		</div>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-md-6">
 			    <?php the_post_thumbnail(); ?>
 			</div>
 	</div>

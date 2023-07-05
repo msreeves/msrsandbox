@@ -20,14 +20,14 @@
             <div class="row">
           <?php while ( $all_adverts->have_posts() ) : $all_adverts->the_post(); ?>	
        		<div class="col-lg-4">
-				<div class="center-column">
+				<div class="panel">
 				<div class="my-auto">
 				<h2 class="text-center">Advertisement</h2>
 		  </div>
 		  </div>
 </div>
 <div class="col-lg-8">
-					<div class="center-column">
+					<div class="panel">
 				<div class="my-auto mx-auto">
                     <?php 
 $link = get_field('link');  ?>

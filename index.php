@@ -58,12 +58,23 @@ get_header();
             </div>
         </div>
 </section>
+
+  <?php 	
+      $args = array(
+     	'post_type' => 'banner',
+		  'posts_per_page' => 2
+		);
+      $all_banners = new WP_Query( $args );		
+      ?>
+
+      <?php if ( $all_banners->have_posts() ) : ?>
 <?php get_template_part( 'inc/components/banner' ); ?>
+      </section>
+      <?php endif; ?> 
 <section class="posts-tabs">
     <h1> My Stories </h1>
 	<div class="container">
          <?php get_template_part( 'inc/components/searchbar' ); ?>
-	<div class="categories">
 	<ul class="nav nav-tabs">
 <?php 
 
@@ -73,7 +84,6 @@ foreach($categories as $cat) : ?>
 	<li class="js-filter-item"><a data-category="<?= $cat->term_id; ?>" href="<?= get_category_link($cat->term_id); ?>"><button><?= $cat->name; ?></button></a></li>
 <?php endforeach; ?>
 </ul>
-</div>
 <div class="js-filter">
 	<?php
 	$args = array(
@@ -232,7 +242,7 @@ foreach ( $podcaster_terms as $podcaster_term ) {
     ) );
     ?>
             <div class="row g-0 mb-3">
-     <div class="col-sm-6"> 
+     <div class="col-md-6"> 
    <?php
 $image = get_field('cat_thumb', $podcaster_term);
 if( $image ):
@@ -256,8 +266,8 @@ if( $image ):
 <?php endif; ?>
 
     </div>
-         <div class="col-sm-6">
-        <div class="center-column event__panel">
+         <div class="col-md-6">
+        <div class="panel ">
             <div class="my-auto">
                   <h2><?php echo $podcaster_term->name; ?></h2>
     <?php

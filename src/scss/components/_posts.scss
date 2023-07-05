@@ -35,6 +35,7 @@ article.post {
         object-position: center;
         overflow: hidden;
         height: 100vh;
+        width: 100%;
     }
 }
 
@@ -55,6 +56,7 @@ figure.featured-media {
     width: calc(100% - 4rem);
     margin-left: auto;
     margin-right: auto;
+    padding: 3rem 0;
 
     p {
         font-size: 1.6rem;
@@ -74,6 +76,10 @@ figure.featured-media {
         font-size: 18px;
         display: block;
         text-align: center;
+    }
+
+    button {
+        width: 100%;
     }
 }
 
@@ -99,5 +105,27 @@ figure.featured-media {
         object-position: center;
         overflow: hidden;
         height: 60vh;
+        width: 100%;
     }
 }
+
+.partner-listing-image {
+    img {
+        object-fit: contain;
+        object-position: center;
+        overflow: hidden;
+        height: 40vh;
+        width: 100%;
+    }
+}
+
+
+    .nav-tabs {
+        display: flex;
+        justify-content: center;
+        border-bottom: none;
+
+        li {
+            margin: 10px;
+        }
+    }

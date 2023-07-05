@@ -6,7 +6,6 @@
  */
 
  if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.0' );
 }
 
@@ -36,14 +35,24 @@ add_action( 'init', 'msrsandbox_menus' );
  */
 
  function theme_scripts() {
-	wp_enqueue_style('StyleCSS', get_template_directory_uri() . '/style.css' , array(), time());
-	wp_register_style('appcss', get_template_directory_uri() . '/dist/app.css' , [], 1 , 'all');
+	wp_register_style('googlefonts', 'https://fonts.googleapis.com/css2?family=DM+Sans&family=Italiana&display=swap', array(), null);
+	wp_enqueue_style('basecss', 'https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css');
+	wp_enqueue_style('animatecss', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+	wp_enqueue_style('fancyboxcss', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css');;
+	wp_enqueue_style('stylecss', get_template_directory_uri() . '/style.css' , array(), time());
+	wp_register_style('appcss', get_template_directory_uri() . '/dist/app.css' , array(), time());
+	wp_enqueue_style('googlefonts');
+	wp_enqueue_style('basecss');
     wp_enqueue_style('appcss');
 
-	wp_enqueue_script('AnimationJS', get_template_directory_uri() . '/src/js/animation.js', array('jquery'));
-    wp_enqueue_script('PostsJS', get_template_directory_uri() . '/src/js/posts.js', array('jquery'));
-	wp_enqueue_script('NavJS', get_template_directory_uri() . '/src/js/navigation.js', array(), _S_VERSION, true );
+	wp_register_script( 'fontawesomejs', 'https://kit.fontawesome.com/2c48647809.js' );
+	wp_register_script( 'lottiejs', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js' );
+	wp_enqueue_script('animationjs', get_template_directory_uri() . '/src/js/animation.js', array('jquery'));
+    wp_enqueue_script('postsjs', get_template_directory_uri() . '/src/js/posts.js', array('jquery'));
+	wp_enqueue_script('navjs', get_template_directory_uri() . '/src/js/navigation.js', array(), _S_VERSION, true );
     wp_register_script('appjs', get_template_directory_uri() . '/dist/app.js' , ['jquery'], 1 , true);
+	wp_enqueue_script('jquery');
+	wp_enqueue_script('fontawesomejs');
     wp_enqueue_script('appjs');
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );

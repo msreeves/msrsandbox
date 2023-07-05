@@ -15,9 +15,9 @@
 
 <article <?php post_class(); ?> id="post-people<?php the_ID(); ?>">
 <div class="container">
-	<div class="row">
-		<div class="col-sm-6">
-			<div class="center-column">
+	<div class="row g-0">
+		<div class="col-md-6">
+			<div class="panel">
 				<div class="my-auto text-center">
 				<?php the_title( '<h1>', '</h1>' ); ?>
 			<div class="social-media">
@@ -46,7 +46,7 @@
 		</div>
 		</div>
 			</div>
-		<div class="col-sm-6">
+		<div class="col-md-6">
 		<?php get_template_part( 'templates/partials/featured-image' ); ?>
 		</div>
 		<div class="col-sm-12">

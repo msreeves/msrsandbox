@@ -22,10 +22,6 @@
 
 .carousel-row {
     white-space: nowrap;
-    margin-top: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 2);
-    margin-bottom: calc((var(--carousel-tile-height) * (var(--carousel-growth-factor) - 1)) / 2);
-    margin-left: calc((var(--carousel-tile-width) * (var(--carousel-growth-factor) - 1)) / 2);
-    margin-right: calc((var(--carousel-tile-width) * (var(--carousel-growth-factor) - 1)) / 2);
     transition: var(--carousel-transition-2);
 
     &:hover {
@@ -53,7 +49,11 @@
     -webkit-transform-origin: center left;
     transform-origin: center left;
     cursor: pointer;
-    cursor: hand;
+
+    @include media(">phone", "<=tablet") {
+             display: block;
+             width: 100%;
+        }
 
     img {
         object-fit: cover;
@@ -74,4 +74,25 @@
         -webkit-transform: translate3d(var(--carousel-offset-right), 0, 0);
         transform: translate3d(var(--carousel-offset-right), 0, 0);
     }
+}
+
+button:not(:disabled),
+[type=button]:not(:disabled),
+[type=reset]:not(:disabled),
+[type=submit]:not(:disabled) {
+    cursor: pointer;
+}
+
+[type=button] {
+    -webkit-appearance: button;
+}
+
+.carousel-control-next {
+    right: 0;
+}
+
+.carousel-inner>.item {
+    -webkit-transition: -webkit-transform 1.2s ease-in-out !important;
+    -o-transition: -o-transform 1.2s ease-in-out !important;
+    transition: transform 1.2s ease-in-out !important;
 }

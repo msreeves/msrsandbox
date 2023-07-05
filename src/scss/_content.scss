@@ -3,106 +3,27 @@
 @import 'components/gallery';
 @import 'components/posts';
 @import 'components/carousel';
-@import 'elements/typography';
-@import 'elements/buttons';
 
-/* Normalize
---------------------------------------------- */
-
-/* Grouping content
-	 ========================================================================== */
-
-/**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
-hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
+section#adverthead {
+    padding: 2rem 0;
+    background: $white;
 }
 
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-pre {
-    font-family: monospace, monospace;
-    font-size: 1em;
+section#advertfoot {
+    padding: 2rem 0;
+    background: $white;
+    margin-top: 2rem;
 }
 
-/* Text-level semantics
-	 ========================================================================== */
-
-/**
- * Remove the gray background on active links in IE 10.
- */
-a {
-    background-color: transparent;
+section {
+    padding: 5rem 0;
 }
 
-/**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-    border-bottom: none;
-    text-decoration: underline;
-    text-decoration: underline dotted;
-}
-
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-b,
-strong {
-    font-weight: bolder;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
-code,
-kbd,
-samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
-
-/**
- * Add the correct font size in all browsers.
- */
-small {
-    font-size: 80%;
-}
-
-/**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
-sub,
-sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-
-sub {
-    bottom: -0.25em;
-}
-
-sup {
-    top: -0.5em;
-}
-
-/* Embedded content
-	 ========================================================================== */
-
-/**
- * Remove the border on images inside links in IE 10.
- */
-img {
-    border-style: none;
+.panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $white;
+    text-align: center;
+    padding: 20px 40px;
 }

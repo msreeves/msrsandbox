@@ -16,7 +16,7 @@
   <?php echo get_template_part( 'templates/partials/featured-image' ); ?>
 </div>
     <div class="col-lg-8">
-      <div class="center-column event__panel">
+      <div class="panel">
         <div class="my-auto">
 <h1> <?php echo search_title_highlight(); ?></h1>
 <?php echo search_excerpt_highlight(); ?>

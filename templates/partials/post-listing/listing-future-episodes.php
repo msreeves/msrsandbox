@@ -1,4 +1,4 @@
- <div class="center-column event__panel">
+ <div class="panel ">
             <div class="my-auto">
                   <h2><?php echo $podcaster_term->name; ?></h2>
     <?php

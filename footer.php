@@ -11,7 +11,7 @@
 
 ?>
   <?php get_template_part( 'templates/partials/footer-leaderboard' ); ?>	
-	<footer id="colophon" class="site-footer bg-light">
+	<footer id="colophon" class="site-footer">
 			<?php
 
 $has_footer_menu = has_nav_menu( 'footer' );
@@ -35,7 +35,7 @@ if ( $has_footer_menu || $has_social_menu ) {
 								);
 								?>
 						<?php } ?>
-                <div class="ms-auto">
+                <div class="social-media ms-lg-auto">
            <?php 
     $locations = get_registered_nav_menus();
     $menus = wp_get_nav_menus();
