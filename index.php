@@ -17,14 +17,12 @@ get_header();
 ?>
 <main id="site-content">
 <?php if (is_page( 37 )) : ?>
-
     <?php get_template_part( 'inc/components/mainstories' ); ?>
     <?php get_template_part( 'inc/components/sponsoredlist' ); ?>  
     <?php get_template_part( 'inc/components/storieslist' ); ?>
     <?php get_template_part( 'inc/components/event' ); ?>
     <?php get_template_part( 'inc/components/publicationlist' ); ?>
     <?php get_template_part( 'inc/components/partners' ); ?>
-    <?php get_template_part( 'inc/components/peoplelist' ); ?>
 <?php else : ?>
   <section>
    <div class="container">

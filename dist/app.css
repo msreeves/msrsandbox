@@ -382,6 +382,13 @@ article .entry-content p {
   font-family: "Italiana", serif;
 }
 
+.latest .nav-tabs {
+  display: block;
+}
+.latest .nav-tabs a button {
+  width: 100%;
+}
+
 .pagination .nav-links {
   display: flex;
   justify-content: center;

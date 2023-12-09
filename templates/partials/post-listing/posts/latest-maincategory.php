@@ -7,9 +7,14 @@
         </div>
          <div class="col-lg-6 d-flex flex-column"> 
             <div class="listing-text my-auto">
-              <p> <?php foreach((get_the_category()) as $category) {
-                echo '<a href="' . esc_url( get_category_link( $category ) ) . '"><span>' . $category->cat_name . '</span></a>';
-                } ?>
+           <p> <?php $cat_name = 'category';
+       $categories = get_the_terms( $post->ID, $cat_name );
+       foreach($categories as $category) {
+         if($category->parent){
+            echo '<a href="' . esc_url( get_category_link( $category ) ) . '"><span>' . $category->name . '</span></a>';
+         }
+       }  
+?> 
                  </p>  
             <h3><?php the_title() ?></h3>                  
                      <p><?php echo wpse_custom_excerpts(30); ?></p>

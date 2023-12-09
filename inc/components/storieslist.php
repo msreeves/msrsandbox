@@ -17,15 +17,9 @@
       	'post_type' => 'post',
       	'posts_per_page' => 3,
         'offset' => 1, 
-      	'paged' => $paged,
-          'tax_query' => array(
-                array(
-           'taxonomy' => 'category', // taxonomy name
-            'field' => 'slug',
-            'terms' => 'sponsored-content', // term slug for exclude
-            'operator' => 'NOT IN'
-                )
-          )
+        'category__not_in' => array( 6 ),
+      	'paged' => $paged
+
       )); ?>
       
               <div class="row">

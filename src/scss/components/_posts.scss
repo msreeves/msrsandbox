@@ -92,6 +92,18 @@ article {
         }
 }
 
+.latest {
+    .nav-tabs {
+        display: block;
+        
+        a {
+            button {
+                width: 100%;
+            }
+        }
+    }
+}
+
 .pagination .nav-links {
     display: flex;
     justify-content: center;

@@ -1,15 +1,8 @@
-
-        <?php 	
+<?php 	
         $args = array(
           'post_type' => 'post',
-          'posts_per_page'  => -1,
-           'tax_query' => array(
-            array(
-              'taxonomy' => 'category',
-              'field' => 'slug',
-              'terms' => 'sponsored-content'
-            )
-          )
+          'posts_per_page'  => 3,
+          'category__in' => array( 6 )
         );
         $posts = new WP_Query( $args );		
         ?>
