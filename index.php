@@ -16,7 +16,7 @@ get_header();
         
 ?>
 <main id="site-content">
-<?php if (is_page( 267 )) : ?>
+<?php if (is_page( 37 )) : ?>
   <?php
 
 $news_cat_ID = get_cat_ID( 'category' ); 
