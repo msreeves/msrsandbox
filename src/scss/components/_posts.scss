@@ -1,131 +1,120 @@
-article.post {
-    .entry-content {
-        p {
-            &:first-of-type {
-                &:first-letter {
-                    font-size: 8.5rem;
-                    font-weight: bold;
-                    color: $primary;
+article {
+    background-color: $white;
+        padding: 20px;
+
+        &.post {
+                .entry-content {
+                    p {
+                        &:first-of-type {
+                            &:first-letter {
+                                font-size: 8.5rem;
+                                font-weight: bold;
+                                color: $primary;
+                            }
+                        }
+                    }
                 }
             }
-        }
-    }
+
+        .entry-header {
+                max-width: 72rem;
+                width: calc(100% - 4rem);
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+        
+            .entry-content {
+                max-width: 58rem;
+                width: calc(100% - 4rem);
+                margin-left: auto;
+                margin-right: auto;
+                padding: 3rem 0;
+        
+                p {
+                    font-size: 1.6rem;
+                    line-height: 1.476;
+                }
+            }
 }
 
 .post {
-    .listing-image {
-        overflow: hidden;
+    &.panel {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
 
-        img {
-            transition: transform .5s ease;
-        }
+.panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
 
-        &:hover {
-            img {
-                transform: scale(1.5);
+    .listing-sponsored-panel {
+            padding: 10px;
+    
+            h3 {
+                color: $primary;
+            }
+    
+            p {
+                color: $primary;
             }
         }
-    }
-}
-
-.featured-media-inner {
-    img {
-        margin: 0;
-        object-fit: cover;
-        object-position: center;
-        overflow: hidden;
-        height: 100vh;
-        width: 100%;
-    }
-}
-
-figure.featured-media {
-    margin: 0;
-}
-
-.entry-header {
-    max-width: 72rem;
-    width: calc(100% - 4rem);
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.entry-content {
-    max-width: 58rem;
-    width: calc(100% - 4rem);
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3rem 0;
-
-    p {
-        font-size: 1.6rem;
-        line-height: 1.476;
-    }
-}
-
-.listing-panel {
-    background-color: $white;
-    padding: 10px;
-
-    span {
-        background-color: $white;
-        color: $white;
-        margin: 0 5px 0 0;
-        padding: 0 5px;
-        font-size: 18px;
-        display: block;
-        text-align: center;
-    }
+    
+        .listing-text {
+            padding: 20px;
+        }
 
     button {
         width: 100%;
     }
-}
 
-.listing-sponsored-panel {
-    padding: 10px;
-
-    h3 {
-        color: $primary;
-    }
-
-    p {
-        color: $primary;
+    span {
+        background-color: $red;
+        color: $white;
+        margin: 0 5px 0 0;
+        padding: 0 5px;
+        font-size: 18px;
+        display: inline-block;
     }
 }
 
-.listing-text {
-    padding: 20px;
-}
-
-.listing-image {
-    img {
-        object-fit: cover;
-        object-position: center;
-        overflow: hidden;
-        height: 60vh;
-        width: 100%;
-    }
-}
-
-.partner-listing-image {
-    img {
-        object-fit: contain;
-        object-position: center;
-        overflow: hidden;
-        height: 40vh;
-        width: 100%;
-    }
-}
-
-
-    .nav-tabs {
+.nav-tabs {
         display: flex;
         justify-content: center;
         border-bottom: none;
 
         li {
             margin: 10px;
+            font-family: $header-text;
         }
-    }
+}
+
+.pagination .nav-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.pagination a.page-numbers, span.page-numbers {
+    background: $primary;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 0;
+        color: $white;
+        display: inline-block;
+        letter-spacing: 0.0333em;
+        line-height: 1.25;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 0 1px #ccc;
+        -webkit-transition: all 0.5s ease-in-out;
+        font-family: inherit;
+        margin: 0;
+        overflow: visible;
+        -webkit-appearance: button;
+        text-decoration: none;
+        margin: 0 5px;
+}

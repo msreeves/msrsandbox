@@ -10,7 +10,9 @@
  */
 
 ?>
-  <?php get_template_part( 'templates/partials/footer-leaderboard' ); ?>	
+
+ <?php get_template_part( 'templates/partials/leaderboard/footer' ); ?>	
+
 	<footer id="colophon" class="site-footer">
 			<?php
 
@@ -21,7 +23,7 @@ $has_social_menu = has_nav_menu( 'social' );
 // Only output the container if there are elements to display.
 if ( $has_footer_menu || $has_social_menu ) {
 	?>	
-		  <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
+		  <nav class="navbar navbar-expand-lg navbar-light p-4">
         <div class="navbar-nav container-fluid">
 			<?php if ( $has_footer_menu ) { ?>
 								<?php
@@ -60,7 +62,7 @@ if ( $has_footer_menu || $has_social_menu ) {
         $id = get_post_meta( $item->ID, '_menu_item_object_id', true );
         $page = get_page( $id );
         //$link = get_page_link( $id ); ?>
-<a href="<?php echo $item->url; ?> " target="_blank"><i class="fa fa-<?php echo $item->title ?> fa-2xl"></i></a>
+<a href="<?php echo $item->url; ?> " target="_blank"><i class="fa-brands fa-<?php echo $item->title ?> fa-2xl"></i></a>
   <?php 
       }
 

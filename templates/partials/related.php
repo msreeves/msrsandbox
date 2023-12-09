@@ -50,17 +50,21 @@ if (!empty($previd)){
 ?>
 
   <div class="col-lg-6 mx-auto">
-        <div class="post listing-panel">  
+        <div class="post panel">  
         <div class="listing-image">
             	<?php echo wp_kses_post( get_the_post_thumbnail( $previd ) ); ?>
             </div>
             <div class="listing-text">
-            <?php if( in_category( 'sponsored-content', $previd ) ): ?>
-              <span> Sponsored Content</span> 
-              <h3><?php echo wp_kses_post( get_the_title( $previd ) ); ?></h3> 
-                      <?php else: ?>
-            <h3><?php echo wp_kses_post( get_the_title( $previd ) ); ?></h3> 
-            <?php endif; ?>                   
+                     <p> <?php $cat_name = 'category';
+       $categories = get_the_terms( $post->ID, $cat_name );
+       foreach($categories as $category) {
+         if($category->parent){
+            echo '<a href="' . esc_url( get_category_link( $category ) ) . '"><span>' . $category->name . '</span></a>';
+         }
+       }  
+?> 
+                 </p>  
+            <h3><?php echo wp_kses_post( get_the_title( $previd ) ); ?></h3>                   
                      <p><?php echo wp_kses_post ( get_the_excerpt( $previd ) ); ?></p>
                       <a href="<?php echo esc_url( get_permalink( $previd ) ); ?>"><button>Read more</button></a>
                     </div>
@@ -72,17 +76,21 @@ if (!empty($nextid)){
 ?>
 
   <div class="col-lg-6 mx-auto">
-        <div class="post listing-panel">  
+        <div class="post panel">  
         <div class="listing-image">
             	<?php echo wp_kses_post( get_the_post_thumbnail( $nextid ) ); ?>
             </div>
             <div class="listing-text">
-            <?php if( in_category( 'sponsored-content', $nextid ) ): ?>
-              <span> Sponsored Content</span> 
-              <h3><?php echo wp_kses_post( get_the_title( $nextid ) ); ?></h3> 
-                      <?php else: ?>
-            <h3><?php echo wp_kses_post( get_the_title( $nextid ) ); ?></h3> 
-            <?php endif; ?>                   
+                    <p> <?php $cat_name = 'category';
+       $categories = get_the_terms( $post->ID, $cat_name );
+       foreach($categories as $category) {
+         if($category->parent){
+            echo '<a href="' . esc_url( get_category_link( $category ) ) . '"><span>' . $category->name . '</span></a>';
+         }
+       }  
+?> 
+                 </p>  
+            <h3><?php echo wp_kses_post( get_the_title( $nextid ) ); ?></h3>                
                      <p><?php echo wp_kses_post ( get_the_excerpt( $nextid ) ); ?></p>
                       <a href="<?php echo esc_url( get_permalink( $nextid ) ); ?>"><button>Read more</button></a>
                     </div>

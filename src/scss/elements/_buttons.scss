@@ -15,6 +15,11 @@
     margin: 0;
     overflow: visible;
     -webkit-appearance: button;
+    font-family: $header-text;
+
+    &.secondary {
+        background: $red;
+        }
 
     &:hover {
         border-color: $white;
@@ -37,6 +42,12 @@
     &:-moz-focusring {
         outline: 1px dotted ButtonText;
     }
+          a {
+              &.btn-load-more {
+                  color: $white;
+                  text-decoration: none;
+              }
+          }
     }
 
 input[type="button"] {
@@ -55,6 +66,7 @@ input[type="button"] {
     transition: opacity 0.15s linear;
     box-shadow: 0 0 1px #ccc;
     -webkit-transition: all 0.5s ease-in-out;
+    font-family: $header-text;
 
     &:hover {
         border-color: $white;
@@ -117,6 +129,7 @@ input[type="submit"] {
     transition: opacity 0.15s linear;
     box-shadow: 0 0 1px #ccc;
     -webkit-transition: all 0.5s ease-in-out;
+    font-family: $header-text;
 
     &:hover {
         border-color: $white;
@@ -293,4 +306,8 @@ select {
     &:-moz-focusring {
         outline: 1px dotted ButtonText;
     }
+}
+
+.btn {
+    font-family: $header-text;
 }

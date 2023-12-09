@@ -9,8 +9,15 @@
 
 ?>
 
+<section>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<div class="panel text-center">
+				<p> <?php foreach((get_the_category()) as $category) {
+                echo '<span>'; 
+                echo '<a href="' . esc_url( get_category_link( $category ) ) . '"><span>' . $category->cat_name . '</span></a>';
+                echo '</span>';
+                } ?>
+                 </p> 
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
@@ -26,7 +33,7 @@
 		</p><!-- .entry-meta -->
 		<?php endif; ?>
         <?php get_template_part('templates/partials/featured-image'); ?>
-	</header><!-- .entry-header -->
+			</div><!-- .entry-header -->
 
 	<div class="entry-content">
 		<?php
@@ -54,10 +61,10 @@
 		?>
 	</div><!-- .entry-content -->
     <?php
-if (is_single())
+if (is_singular('post'))
 {
 
-    get_template_part('templates/partials/navigation');
+    get_template_part('templates/partials/related');
 
 }
 
@@ -79,3 +86,4 @@ if ((is_single() || is_page()) && (comments_open() || get_comments_number()) && 
 }
 ?>
 </article><!-- #post-<?php the_ID(); ?> -->
+</section>

@@ -1,20 +1,15 @@
-<?php
+ <?php
 /**
- * Template Name: Partners template
+ * Layouts > Partners
  *
  * @package WordPress
- * @subpackage msrawards
- * @since msrawards 1.0
+ * @subpackage QORP
  */
 
-get_header();
 ?>
-<section>
-  <div class="container">
-      <div class="post panel">
-        <?php the_title( '<h1>', '</h1>' ); ?>
-          <?php the_content(); ?>
-      </div>  
+ 
+<div class="container">
+    <div class="row">   
          <?php 	
       $args = array(
         'post_type' => 'partner',
@@ -26,15 +21,14 @@ get_header();
       ?>
 
       <?php if ( $all_partners->have_posts() ) : ?>
+        <div class="container">
             <div class="row">
           <?php while ( $all_partners->have_posts() ) : $all_partners->the_post(); ?>	
       <?php get_template_part( 'templates/partials/post-listing/listing-partner' ); ?>
           <?php endwhile; ?>
           <?php wp_reset_query() ?>
       </div>
+      </div>
       <?php endif; ?>
-
 </div>
-</section>
-<?php
-get_footer();
+      </div>

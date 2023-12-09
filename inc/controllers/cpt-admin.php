@@ -1,41 +1,12 @@
-<?php
-$post_type = 'people';
-
-// Register the columns.
-add_filter( "manage_{$post_type}_posts_columns", function ( $defaults ) {
-	
-	$defaults['job-title'] = 'Job Title';
-	$defaults['company'] = 'Company';
-	$defaults['profile-image'] = 'Profile Image';
-    unset($defaults['date']);
-	unset($defaults['comments']);
-
-	return $defaults;
-} );
-
-// Handle the value for each of the new columns.
-add_action( "manage_{$post_type}_posts_custom_column", function ( $column_name, $post_id ) {
-	if ( $column_name == 'job-title' ) {
-		echo get_field( 'job_title', $post_id );
-	}
-	
-	if ( $column_name == 'company' ) {
-		echo get_field( 'company', $post_id );
-	}
-
-	if ( $column_name == 'profile-image' ) {
-		echo get_the_post_thumbnail ($post_id , 'thumbnail' );
-	}
-	
-}, 10, 2 );
-
+<?php 
 $post_type = 'event';
 
 // Register the columns.
 add_filter( "manage_{$post_type}_posts_columns", function ( $defaults ) {
 	
-	$defaults['event-date'] = 'Date';
-	$defaults['venue'] = 'Venue';
+  $defaults['title'] = 'Name';
+  $defaults['dates'] = 'Dates';
+  $defaults['venue'] = 'Venue';
 
 	return $defaults;
 } );
@@ -43,17 +14,24 @@ add_filter( "manage_{$post_type}_posts_columns", function ( $defaults ) {
 // Handle the value for each of the new columns.
 add_action( "manage_{$post_type}_posts_custom_column", function ( $column_name, $post_id ) {
 	
-	if ( $column_name == 'event-date' ) {
-		   $date = DateTime::createFromFormat('F j, Y', get_field('event_date'));
-	   if( empty( $date ) ) :
-	     echo 'TBC';
-	   else:
-	     echo $date->format('F j, Y');
-	   endif;
+	if ( $column_name == 'title' ) {
+		echo get_title( $post_id, true);
 	}
-	
-	if ( $column_name == 'venue' ) {
-		echo get_field( 'venue', $post_id );
+
+   if ( $column_name == 'dates' ) {
+		 echo (new DateTime(get_post_meta($post_id,'date_start',true)))->format('F j, Y');
+	  $finish = get_post_meta($post_id,'date_finish',true);
+	 	if (empty($finish)) {
+		echo '';
+		} 
+		else {
+		echo '<br>';
+		echo (new DateTime($finish))->format('F j, Y');
+		}
+	}
+
+  if ( $column_name == 'venue' ) {
+		echo get_post_meta( $post_id, 'venue_name', true);
 	}
 	
 }, 10, 2 );
@@ -63,6 +41,8 @@ $post_type = 'podcast';
 // Register the columns.
 add_filter( "manage_{$post_type}_posts_columns", function ( $defaults ) {
 	
+	$defaults['series'] = 'Series';
+	$defaults['episode'] = 'Episode';
 	$defaults['runtime'] = 'Runtime';
 
 	return $defaults;
@@ -75,6 +55,14 @@ add_action( "manage_{$post_type}_posts_custom_column", function ( $column_name, 
 	
 	if ( $column_name == 'runtime' ) {
 		echo get_field( 'runtime', $post_id );
+	}
+
+	if ( $column_name == 'series' ) {
+		echo get_field( 'series', $post_id );
+	}
+
+	if ( $column_name == 'episode' ) {
+		echo get_field( 'episode', $post_id );
 	}
 	
 }, 10, 2 );
@@ -106,3 +94,42 @@ function thumbnail_columns_content($content, $column_name, $term_id) {
     return $content;
 }
 add_filter('manage_podcaster_custom_column' , 'thumbnail_columns_content' , 10 , 3);
+
+$post_type = 'member';
+
+// Register the columns.
+add_filter( "manage_{$post_type}_posts_columns", function ( $defaults ) {
+	
+	$defaults['job-title'] = 'Job Title';
+    unset($defaults['date']);
+	unset($defaults['comments']);
+
+	return $defaults;
+} );
+
+// Handle the value for each of the new columns.
+add_action( "manage_{$post_type}_posts_custom_column", function ( $column_name, $post_id ) {
+	if ( $column_name == 'job-title' ) {
+		echo get_field( 'job_title', $post_id );
+	}
+	
+	if ( $column_name == 'company' ) {
+		echo get_field( 'company', $post_id );
+	}
+	
+}, 10, 2 );
+
+function ig_sort_member_name( $query ){
+    global $pagenow;
+    
+    if( is_admin() && 'edit.php' == $pagenow && !isset( $_GET['orderby'] ) ):
+        if( $_GET['post_type'] == 'member' && !isset( $_GET['post_status'] ) ):
+
+            $query->set( 'meta_key', 'name' );
+            $query->set( 'orderby', 'meta_value' );
+            $query->set( 'order', 'ASC' );
+        endif;
+            
+    endif;
+}
+add_action( 'pre_get_posts', 'ig_sort_member_name' );

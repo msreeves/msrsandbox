@@ -31,7 +31,8 @@ get_header();
     echo $wp_query->found_posts . " " . $result . " found.";
     ?></h3>
 			</header><!-- .page-header -->
-
+            <div class="container">
+			<div class="row">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -43,10 +44,17 @@ get_header();
 				 * called content-search.php and that will be used instead.
 				 */
 				get_template_part( 'template-parts/content', 'search' );
+				
 
 			endwhile;
 
-			the_posts_navigation();
+			echo '<section>';
+			the_posts_pagination( array(
+'mid_size' => 2,
+'prev_text' => __( 'Previous', 'textdomain' ),
+'next_text' => __( 'Next', 'textdomain' ),
+) );
+			echo '</section>';
 
 		else :
 
@@ -54,7 +62,8 @@ get_header();
 
 		endif;
 		?>
-
+		</div>
+				</div>
 	</main><!-- #main -->
 
 <?php

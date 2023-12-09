@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Partners template
+ * Template Name: Members template
  *
  * @package WordPress
  * @subpackage msrawards
@@ -14,10 +14,10 @@ get_header();
       <div class="post panel">
         <?php the_title( '<h1>', '</h1>' ); ?>
           <?php the_content(); ?>
-      </div>  
+      </div> 
          <?php 	
       $args = array(
-        'post_type' => 'partner',
+        'post_type' => 'member',
         'posts_per_page' => -1,
         'orderby' => 'title',
         'order' => 'ASC'
@@ -28,13 +28,12 @@ get_header();
       <?php if ( $all_partners->have_posts() ) : ?>
             <div class="row">
           <?php while ( $all_partners->have_posts() ) : $all_partners->the_post(); ?>	
-      <?php get_template_part( 'templates/partials/post-listing/listing-partner' ); ?>
+      <?php get_template_part( 'templates/partials/post-listing/listing-people' ); ?>
           <?php endwhile; ?>
           <?php wp_reset_query() ?>
       </div>
       <?php endif; ?>
-
-</div>
+      </div>
 </section>
 <?php
 get_footer();

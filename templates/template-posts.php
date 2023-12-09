@@ -8,41 +8,86 @@
  */
 get_header();
 ?>
+  <section>
+  <div class="container">
+      <div class="post panel">
+        <?php the_title( '<h1>', '</h1>' ); ?>
+          <?php the_content(); ?>
+             <?php get_template_part( 'inc/controllers/searchbar' ); ?>
+      </div>
+<div class="post-tabs">
 
-<section class="posts-tabs">
-	<div class="categories">
-	<ul class="nav nav-tabs">
-<?php 
+  <?php $post_categories = get_categories('parent=0'); // get all the categories ?>
 
-$categories = get_categories($cat_args);
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+  <li class="active">
+      <a href="#all" data-bs-toggle="tab" role="tab" aria-controls="all" aria-selected="all"><button><?php echo $post_category->name ?>All</button></a>
+    </li>
+    <?php foreach($post_categories as $post_category) { ?>
+      <li>
+        <a href="#<?php echo $post_category->slug ?>" data-bs-toggle="tab"><button><?php echo $post_category->name ?></button></a>
+      </li>
+    <? } ?>
+  </ul>
 
-foreach($categories as $cat) : ?>
-	<li class="js-filter-item"><a data-category="<?= $cat->term_id; ?>" href="<?= get_category_link($cat->term_id); ?>"><button><?= $cat->name; ?></button></a></li>
-<?php endforeach; ?>
-</ul>
-</div>
-<div class="js-filter">
-	<?php
-	$args = array(
-		'post_type' => 'post',
-		'posts_per_page' => -1
-		);
+  <!-- Tab panes -->
+  <div class="tab-content">
 
-		$query = new WP_Query($args);
+    <div class="tab-pane fade show active" id="all">
+      <?php 	
+      $args = array(
+        'post_type' => 'post',
+        'posts_per_page' => -1,
 
-		if($query->have_posts()) :
-			echo '<div class="container">';
-			echo '<div class="row">';
-			while($query->have_posts()) : $query->the_post();
-				get_template_part( 'templates/partials/post-listing/listing-posts' );
-			endwhile;
-			echo '</div>';
-			echo '</div>';
-			endif;
-			wp_reset_postdata(); ?>
-</div>
+      );
+      $all_posts = new WP_Query( $args );		
+      ?>
 
+      <?php if ( $all_posts->have_posts() ) : ?>
+            <div class="row">
+          <?php while ( $all_posts->have_posts() ) : $all_posts->the_post(); ?>	
+              <?php get_template_part( 'templates/partials/post-listing/listing-posts' ); ?>
+          <?php endwhile; ?>
+          <?php wp_reset_query() ?>
+      </div>
+      <?php endif; ?>
+
+    </div>
+
+    <?php foreach($post_categories as $post_category) { ?>
+
+      <div class="tab-pane fade" id="<?php echo $post_category->slug ?>">
+        <?php 	
+        $args = array(
+          'post_type' => 'post',
+          'posts_per_page'  => -1,
+          'tax_query' => array(
+            array(
+              'taxonomy' => 'category',
+              'field' => 'slug',
+              'terms' => $post_category->slug
+            )
+          )
+        );
+        $posts = new WP_Query( $args );		
+        ?>
+
+        <?php if ( $posts->have_posts() ) : ?>
+              <div class="row">
+          <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>	
+          <?php get_template_part( 'templates/partials/post-listing/listing-sub-posts' ); ?>
+          <?php endwhile; ?>
+          <?php wp_reset_query() ?>
+      </div>
+        <?php endif; ?>
+
+      </div>
+    <? }  ?>
+
+  </div>
+        </div>
+        </div>
 </section>
-
 <?php
 get_footer();

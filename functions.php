@@ -12,50 +12,8 @@
 require_once('inc/controllers/cpt.php');
 require_once('inc/controllers/cpt-admin.php');
 require_once('inc/controllers/search.php');
-
-/**
- * Register navigation menus uses wp_nav_menu.
- */
-
-function msrsandbox_menus() {
-
-	$locations = array(
-		'primary'  => __( 'Desktop Horizontal Menu', 'msrsandbox' ),
-		'footer'   => __( 'Footer Menu', 'msrsandbox' ),
-		'social'   => __( 'Social Menu', 'msrsandbox' ),
-	);
-
-	register_nav_menus( $locations );
-}
-
-add_action( 'init', 'msrsandbox_menus' );
-
-/**
- * Register styles and scripts for WP Theme.
- */
-
- function theme_scripts() {
-	wp_register_style('googlefonts', 'https://fonts.googleapis.com/css2?family=DM+Sans&family=Italiana&display=swap', array(), null);
-	wp_enqueue_style('basecss', 'https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/base-min.css');
-	wp_enqueue_style('animatecss', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
-	wp_enqueue_style('fancyboxcss', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css');;
-	wp_enqueue_style('stylecss', get_template_directory_uri() . '/style.css' , array(), time());
-	wp_register_style('appcss', get_template_directory_uri() . '/dist/app.css' , array(), time());
-	wp_enqueue_style('googlefonts');
-	wp_enqueue_style('basecss');
-    wp_enqueue_style('appcss');
-
-	wp_register_script( 'fontawesomejs', 'https://kit.fontawesome.com/2c48647809.js' );
-	wp_register_script( 'lottiejs', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js' );
-	wp_enqueue_script('animationjs', get_template_directory_uri() . '/src/js/animation.js', array('jquery'));
-    wp_enqueue_script('postsjs', get_template_directory_uri() . '/src/js/posts.js', array('jquery'));
-	wp_enqueue_script('navjs', get_template_directory_uri() . '/src/js/navigation.js', array(), _S_VERSION, true );
-    wp_register_script('appjs', get_template_directory_uri() . '/dist/app.js' , ['jquery'], 1 , true);
-	wp_enqueue_script('jquery');
-	wp_enqueue_script('fontawesomejs');
-    wp_enqueue_script('appjs');
-}
-add_action( 'wp_enqueue_scripts', 'theme_scripts' );
+require_once('inc/controllers/wp-menus.php');
+require_once('inc/controllers/script-styles.php');
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -73,12 +31,7 @@ function msrsandbox_setup() {
 
 	set_post_thumbnail_size( 1200, 9999 );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'msrsandbox' ),
-		)
-	);
+
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -143,3 +96,115 @@ function add_custom_logo_url() {
         );
     return $html;   
 } 
+
+add_action('admin_init', function () {
+    // Redirect any user trying to access comments page
+    global $pagenow;
+     
+    if ($pagenow === 'edit-comments.php') {
+        wp_safe_redirect(admin_url());
+        exit;
+    }
+ 
+    // Remove comments metabox from dashboard
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
+ 
+    // Disable support for comments and trackbacks in post types
+    foreach (get_post_types() as $post_type) {
+        if (post_type_supports($post_type, 'comments')) {
+            remove_post_type_support($post_type, 'comments');
+            remove_post_type_support($post_type, 'trackbacks');
+        }
+    }
+});
+ 
+// Close comments on the front-end
+add_filter('comments_open', '__return_false', 20, 2);
+add_filter('pings_open', '__return_false', 20, 2);
+ 
+// Hide existing comments
+add_filter('comments_array', '__return_empty_array', 10, 2);
+ 
+// Remove comments page in menu
+add_action('admin_menu', function () {
+    remove_menu_page('edit-comments.php');
+});
+ 
+// Remove comments links from admin bar
+add_action('init', function () {
+    if (is_admin_bar_showing()) {
+        remove_action('admin_bar_menu', 'wp_admin_bar_comments_menu', 60);
+    }
+});
+
+function enable_svg_upload( $upload_mimes ) {
+	
+    $upload_mimes['svg'] = 'image/svg+xml';
+
+    $upload_mimes['svgz'] = 'image/svg+xml';
+
+    return $upload_mimes;
+
+}
+
+add_filter( 'upload_mimes', 'enable_svg_upload', 10, 1 );
+
+function bsubash_loadmore_ajax_handler(){
+	$type = $_POST['type'];
+	$category = isset($_POST['category']) ? $_POST['category']: '';
+	$args['paged'] = $_POST['page'] + 1;
+	$args['post_status'] = 'publish';
+	$args['posts_per_page'] =  $_POST['limit'];
+	if($type == 'archive'){
+		$args['category_name'] = $category;
+	}
+	query_posts( $args );
+	if( have_posts() ) :
+        echo '<div class="row">';
+		while(have_posts()): the_post();	
+		echo get_template_part( 'templates/partials/post-listing/listing-posts' );
+    endwhile;
+		echo '</div>';
+	endif;
+	die;
+}
+add_action('wp_ajax_loadmore','bsubash_loadmore_ajax_handler');
+add_action('wp_ajax_nopriv_loadmore','bsubash_loadmore_ajax_handler');
+
+if ( ! function_exists( 'tenweb_meta_description' ) ) {
+    function tenweb_meta_description() { 
+        global $post; 
+ 
+        if ( is_singular() ) 
+        { 
+            $des_post = strip_tags( $post->post_content ); 
+            $des_post = strip_shortcodes( $des_post ); 
+            $des_post = str_replace( array("\n", "\r", "\t"), ' ', $des_post ); 
+            $des_post = mb_substr( $des_post, 0, 300, 'utf8' ); 
+            echo '<meta name="description" content="' . $des_post . '" />'. "\n"; 
+        } 
+ 
+        if ( is_home() ) 
+        { 
+            echo '<meta name="description" content="' . get_bloginfo( "description" ) . '" />' . "\n"; 
+        } 
+ 
+        if ( is_category() ) {
+            $des_cat = strip_tags(category_description());
+            echo '<meta name="description" content="' . $des_cat . '" />'. "\n";
+        } 
+    } 
+}
+add_action( 'wp_head', 'tenweb_meta_description');
+
+function post_per_page_control( $query ) {
+     if ( is_archive() ) {
+          $query->set( 'posts_per_page', 18 );
+          return;
+     }
+  }
+  add_action( 'pre_get_posts', 'post_per_page_control' );
+
+function wpse_custom_excerpts($limit) {
+    return wp_trim_words(get_the_excerpt(), $limit, '[...]');
+}

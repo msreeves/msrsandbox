@@ -13,7 +13,7 @@ class New_Post_Types {
                 'singular'  => 'Event',
                 'slug'      => 'event',
                 'menu_icon' => 'dashicons-calendar',
-                'public'    => true, 
+                'public'    => false,   
                 
             ],
              [
@@ -24,31 +24,22 @@ class New_Post_Types {
                 'public'    => false, 
                 
             ],
-             [
-                 'post_type' => 'people',
-                 'label'     => 'People',
-                 'singular'  => 'Person',
-                 'slug'      => 'person',
-                 'menu_icon' => 'dashicons-businessman',
-                 'orderby'   => 'meta_value',
-	             'order'     => 'ASC',
-	             'meta_key'  => 'name',
-                'public'    => true, 
-             ],
-             [
+               [
                 'post_type' => 'advert',
-                'label'     => 'Advertisement',
+                'label'     => 'Advertising',
                 'singular'  => 'Advert',
-                'menu_icon' => 'dashicons-images-alt2',
+                'menu_icon' => 'dashicons-format-image',
                 'public'    => false, 
             ],
-             [
-                'post_type' => 'banner',
-                'label'     => 'Promos',
-                'singular'  => 'Banner',
-                'menu_icon' => 'dashicons-images-alt',
-                'public'    => false, 
+                 [
+                'post_type' => 'podcast',
+                'label'     => 'Podcast',
+                'singular'  => 'Episode',
+                'slug'      => 'episode',
+                'menu_icon' => 'dashicons-format-audio',
+                'public'    => false,
             ],
+
                [
                 'post_type' => 'partner',
                 'label'     => 'Partnerships',
@@ -58,16 +49,18 @@ class New_Post_Types {
                 'public'    => false,                           
                 
             ],
-                [
-                'post_type' => 'podcast',
-                'label'     => 'Podcast',
-                'singular'  => 'Episode',
-                'slug'      => 'episode',
-                'menu_icon' => 'dashicons-format-audio',
-                'public'    => false,
-            ],
 
-
+             [
+                 'post_type' => 'member',
+                 'label'     => 'Members',
+                 'singular'  => 'member',
+                 'slug'      => 'member',
+                 'menu_icon' => 'dashicons-businessman',
+                 'orderby'   => 'meta_value',
+	             'order'     => 'ASC',
+	             'meta_key'  => 'name',
+                 'public'    => true, 
+             ],
         ];
 
         foreach ($post_types as $key => $post_type) {
@@ -136,23 +129,17 @@ new New_Post_Types;
 function be_register_taxonomies() {
 
 	$taxonomies = array(
-		array(
-			'slug'         => 'sector',
-			'single_name'  => 'sector',
-			'plural_name'  => 'Sector',
-			'post_type'    => 'people',
-		),
-        	array(
-			'slug'         => 'type',
-			'single_name'  => 'Type',
-			'plural_name'  => 'Type',
-			'post_type'    => 'advert',
-		),
-          	array(
+           	array(
 			'slug'         => 'podcaster',
 			'single_name'  => 'Podcaster',
 			'plural_name'  => 'Podcaster',
 			'post_type'    => 'podcast',
+		),
+          	array(
+			'slug'         => 'location',
+			'single_name'  => 'Location',
+			'plural_name'  => 'Location',
+			'post_type'    => 'advert',
 		),
 	);
 
@@ -186,88 +173,3 @@ function be_register_taxonomies() {
 	
 }
 add_action( 'init', 'be_register_taxonomies' );
-
-
-function ig_sort_people_name( $query ){
-    global $pagenow;
-    
-    if( is_admin() && 'edit.php' == $pagenow && !isset( $_GET['orderby'] ) ):
-        if( $_GET['post_type'] == 'people' && !isset( $_GET['post_status'] ) ):
-
-            $query->set( 'meta_key', 'name' );
-            $query->set( 'orderby', 'meta_value' );
-            $query->set( 'order', 'ASC' );
-        endif;
-            
-    endif;
-}
-add_action( 'pre_get_posts', 'ig_sort_people_name' );
-
-add_action('wp_ajax_myfilter', 'misha_filter_function'); // wp_ajax_{ACTION HERE} 
-add_action('wp_ajax_nopriv_myfilter', 'misha_filter_function');
-
-function misha_filter_function(){
-	$args = array(
-		'orderby' => 'date', // we will sort posts by date
-		'order'	=> $_POST['date'] // ASC or DESC
-	);
- 
-	// for taxonomies / categories
-	if( isset( $_POST['categoryfilter'] ) )
-		$args['tax_query'] = array(
-			array(
-				'taxonomy' => 'category',
-				'field' => 'id',
-				'terms' => $_POST['categoryfilter']
-			)
-		);
- 
-	$query = new WP_Query( $args );
-	
-	if( $query->have_posts() ) :
-         echo '<div class="row">';
-		while( $query->have_posts() ): $query->the_post();
-			echo get_template_part( 'templates/partials/post-listing/listing-posts' );
-		endwhile;
-        echo '</div>';
-		wp_reset_postdata();
-	else :
-		echo 'No posts found';
-	endif;
-	
-	die();
-}
-
-add_action( 'wp_ajax_nopriv_filter', 'filter_ajax' );
-add_action( 'wp_ajax_filter', 'filter_ajax' );
-
-function filter_ajax() {
-
-
-$category = $_POST['category'];
-
-$args = array(
-		'post_type' => 'post',
-		'posts_per_page' => -1
-		);
-
-if(isset($category)) {
-	$args['category__in'] = array($category);
-}
-
-		$query = new WP_Query($args);
-
-		if($query->have_posts()) :
-			echo '<div class="container">';
-			echo '<div class="row">';
-			while($query->have_posts()) : $query->the_post();
-				get_template_part( 'templates/partials/post-listing/listing-posts' );
-			endwhile;
-			echo '</div>';
-			echo '</div>';
-			endif;
-			wp_reset_postdata(); 
-
-
-	die();
-}
