@@ -18,7 +18,7 @@ get_header();
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p class="text-center"><?php esc_html_e( '', 'msrsandbox' ); ?></p>
+				<h2 class="text-center"><?php esc_html_e( '404', 'msrsandbox' ); ?></h2>
 
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->

@@ -7,8 +7,10 @@ $venue = get_field('venue');
 <div class="post panel">
 <div class="row g-0">
      <div class="col-md-6"> 
-       <?php the_post_thumbnail(); ?>
-    </div>
+     <div class="listing-image">
+            	<?php the_post_thumbnail(); ?>
+            </div>
+      </div>
      <div class="col-md-6">
         <div class="p-5 text-center">
         <h1><?php the_title(); ?></h1>	
@@ -39,5 +41,8 @@ if( $link ):
         </div>
           </div>
           </div>
+          <div class="col-sm-12">
+         <?php the_field('information'); ?>
+</div>
 </div>
 </div>
