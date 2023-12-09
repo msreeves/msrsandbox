@@ -16,13 +16,22 @@
       $latests = new WP_Query(array(
       	'post_type' => 'post',
       	'posts_per_page' => 3,
+        'offset' => 1, 
       	'paged' => $paged,
+          'tax_query' => array(
+                array(
+           'taxonomy' => 'category', // taxonomy name
+            'field' => 'slug',
+            'terms' => 'sponsored-content', // term slug for exclude
+            'operator' => 'NOT IN'
+                )
+          )
       )); ?>
       
               <div class="row">
       <?php while($latests->have_posts()): $latests->the_post();	?>	
         
-      <?php get_template_part( 'templates/partials/post-listing/listing-posts' ); ?>
+      <?php get_template_part( 'templates/partials/post-listing/posts/maincategory' ); ?>
 
        <?php endwhile; ?>
    </div>

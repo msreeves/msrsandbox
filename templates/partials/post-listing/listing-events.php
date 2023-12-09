@@ -4,12 +4,13 @@ $time = get_field('time');
 $venue = get_field('venue');
 ?>
 
-<div class="row g-0 mb-5">
+<div class="post panel">
+<div class="row g-0">
      <div class="col-md-6"> 
        <?php the_post_thumbnail(); ?>
     </div>
      <div class="col-md-6">
-        <div class="panel text-center">
+        <div class="p-5 text-center">
         <h1><?php the_title(); ?></h1>	
         <h2><?php echo $venue['name']; ?></h2>
           <i class="fa fa-map-marker fa-2xl" aria-hidden="true"></i>
@@ -38,9 +39,5 @@ if( $link ):
         </div>
           </div>
           </div>
-          <div class="col-sm-12">
-            <div class="panel">
-              <?php the_field('information'); ?>
-        </div>
-          </div>
+</div>
 </div>

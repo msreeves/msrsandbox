@@ -47,7 +47,7 @@ get_header();
       <?php if ( $all_posts->have_posts() ) : ?>
             <div class="row">
           <?php while ( $all_posts->have_posts() ) : $all_posts->the_post(); ?>	
-              <?php get_template_part( 'templates/partials/post-listing/listing-posts' ); ?>
+              <?php get_template_part( 'templates/partials/post-listing/posts/maincategory' ); ?>
           <?php endwhile; ?>
           <?php wp_reset_query() ?>
       </div>
@@ -76,7 +76,7 @@ get_header();
         <?php if ( $posts->have_posts() ) : ?>
               <div class="row">
           <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>	
-          <?php get_template_part( 'templates/partials/post-listing/listing-sub-posts' ); ?>
+         <?php get_template_part( 'templates/partials/post-listing/posts/subcategory' ); ?>
           <?php endwhile; ?>
           <?php wp_reset_query() ?>
       </div>
