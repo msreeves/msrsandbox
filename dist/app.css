@@ -384,6 +384,7 @@ article .entry-content p {
 
 .latest .nav-tabs {
   display: block;
+  margin-left: 0;
 }
 .latest .nav-tabs a button {
   width: 100%;
