@@ -10,11 +10,9 @@ get_header();
 ?>
   <section>
   <div class="container">
-      <div class="post panel">
         <?php the_title( '<h1>', '</h1>' ); ?>
           <?php the_content(); ?>
              <?php get_template_part( 'inc/controllers/searchbar' ); ?>
-      </div>
 <div class="post-tabs">
 
   <?php $post_categories = get_categories('parent=0'); // get all the categories ?>
@@ -39,6 +37,8 @@ get_header();
       $args = array(
         'post_type' => 'post',
         'posts_per_page' => -1,
+        'orderby' => 'publish_date',
+        'order' => 'ASC'
 
       );
       $all_posts = new WP_Query( $args );		

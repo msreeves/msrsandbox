@@ -18,7 +18,8 @@ get_header();
 <main id="site-content">
 <?php if (is_page( 37 )) : ?>
     <?php get_template_part( 'inc/components/mainstories' ); ?>
-    <?php get_template_part( 'inc/components/sponsoredlist' ); ?>  
+    <?php get_template_part( 'inc/components/sponsoredlist' ); ?>
+    <?php get_template_part( 'templates/partials/leaderboard/billboard' ); ?> 
     <?php get_template_part( 'inc/components/storieslist' ); ?>
     <?php get_template_part( 'inc/components/event' ); ?>
     <?php get_template_part( 'inc/components/publicationlist' ); ?>

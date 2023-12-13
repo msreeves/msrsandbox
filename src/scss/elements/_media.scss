@@ -59,7 +59,7 @@ img {
         object-fit: cover;
         object-position: center;
         overflow: hidden;
-        height: 60vh;
+        height: 50vh;
         width: 100%;
     }
 
@@ -82,4 +82,14 @@ figure.featured-media {
 .fa-brands {
     font-size: 3.2rem;
     color: $primary;
+}
+
+.advert {
+    .panel {
+        background: $red;
+        margin-bottom: 0;
+    h2 {
+        color: $white;
+    }
+}
 }

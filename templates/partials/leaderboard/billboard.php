@@ -7,7 +7,7 @@
             array(
               'taxonomy' => 'location',
               'field' => 'slug',
-              'terms' => 'header'
+              'terms' => 'billboard'
             )
           )
                      ]); ?>
@@ -24,7 +24,7 @@
 		  </div>
 		  </div>
                 </div>
-                      <div class="col-md-8"> 
+                        <div class="col-md-8"> 
                 <div class="panel">
 				<div class="my-auto mx-auto">
                      <a href="<?php echo the_field('link' ,  $slide->ID);?>" target="_blank">

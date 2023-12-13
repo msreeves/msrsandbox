@@ -2,6 +2,11 @@
 			<div class="post panel">  
         <div class="listing-image">
             	<?php the_post_thumbnail(); ?>
+                    			         <?php
+if(in_category(6)){
+?>
+<span class="sponsored">This is Sponsored content</span>
+<?php } ?> 
             </div>
             <div class="listing-text">
               <p> <?php $cat_name = 'category';

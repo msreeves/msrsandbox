@@ -22,12 +22,18 @@ get_header();
 					 <?php get_template_part( 'inc/controllers/searchbar' ); ?>
 				</div>
 					<div class="row">
-			<?php while ( have_posts() ) : ?>
+			<?php $order = get_posts( array('orderby' => 'publish_date', 'order' => 'ASC') );			
+			while ( have_posts($order) ) : ?>
 			<?php the_post(); ?>
 			 		<div class="col-md-4">
 			<div class="post panel">  
-        <div class="listing-image">
+        <div class="listing-image"> 
             	<?php the_post_thumbnail(); ?>
+						         <?php
+if(in_category(6)){
+?>
+<span class="sponsored">This is Sponsored content</span>
+<?php } ?>   
             </div>
             <div class="listing-text">
               <p>   <?php
@@ -36,13 +42,14 @@ get_header();
 if( $terms && ! is_wp_error( $terms ) ){
     foreach( $terms as $term ) {
         if( get_queried_object_id() == $term->parent ){
-            echo '<span>' . $term->name . '</span>';
+            echo '<a href="' . esc_url( get_category_link( $term->term_id ) ) .
+            '"><span>' . $term->name . '</span></a>';
         }
     }
 } ?>
 
                  </p>  
-            <h3><?php the_title() ?></h3>                  
+            <h3><?php the_title() ?></h3>              
                      <p><?php echo wpse_custom_excerpts(30); ?></p>
                       <a href="<?php echo the_permalink(); ?>"><button>Read more</button></a>
                     </div>

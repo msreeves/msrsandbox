@@ -1,4 +1,4 @@
-	   <div id="Carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+	   <div id="Carousel" class="carousel slide advert" data-bs-ride="carousel" data-bs-interval="3000">
                   <div class="carousel-inner">
                      <?php $slider = get_posts([
                           'post_type' => 'advert',

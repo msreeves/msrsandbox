@@ -53,10 +53,15 @@ if (!empty($previd)){
         <div class="post panel">  
         <div class="listing-image">
             	<?php echo wp_kses_post( get_the_post_thumbnail( $previd ) ); ?>
+                  			         <?php
+if(in_category(6)){
+?>
+<span class="sponsored">This is Sponsored content</span>
+<?php } ?> 
             </div>
             <div class="listing-text">
                      <p> <?php $cat_name = 'category';
-       $categories = get_the_terms( $post->ID, $cat_name );
+       $categories = get_the_terms( $previd, $cat_name );
        foreach($categories as $category) {
          if($category->parent){
             echo '<a href="' . esc_url( get_category_link( $category ) ) . '"><span>' . $category->name . '</span></a>';
@@ -79,10 +84,15 @@ if (!empty($nextid)){
         <div class="post panel">  
         <div class="listing-image">
             	<?php echo wp_kses_post( get_the_post_thumbnail( $nextid ) ); ?>
+                  			         <?php
+if(in_category(6)){
+?>
+<span class="sponsored">This is Sponsored content</span>
+<?php } ?> 
             </div>
             <div class="listing-text">
                     <p> <?php $cat_name = 'category';
-       $categories = get_the_terms( $post->ID, $cat_name );
+       $categories = get_the_terms( $nextid, $cat_name );
        foreach($categories as $category) {
          if($category->parent){
             echo '<a href="' . esc_url( get_category_link( $category ) ) . '"><span>' . $category->name . '</span></a>';

@@ -2,6 +2,8 @@
         $args = array(
           'post_type' => 'post',
           'posts_per_page'  => 3,
+          'orderby' => 'publish_date',
+          'order' => 'ASC',
           'category__in' => array( 6 )
         );
         $posts = new WP_Query( $args );		

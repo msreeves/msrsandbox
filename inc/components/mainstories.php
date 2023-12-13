@@ -6,6 +6,9 @@
   <div class="col-md-auto">
 
   <ul class="nav nav-tabs">
+      <li class="active">
+      <a href="#all" data-bs-toggle="tab" role="tab" aria-controls="all" aria-selected="all"><button><?php echo $post_category->name ?>Latest</button></a>
+    </li>
     <?php foreach($post_categories as $post_category) { ?>
       <li>
         <a href="#<?php echo $post_category->slug ?>" data-bs-toggle="tab"><button><?php echo $post_category->name ?></button></a>
@@ -22,13 +25,7 @@
       $args = array(
         'post_type' => 'post',
         'posts_per_page' => 1,
-          'tax_query' => array(
-            array(
-              'taxonomy' => 'category',
-              'field' => 'slug',
-              'terms' => $post_category->slug
-            )
-          )
+        'orderby' => 'publish_date'
 
       );
       $all_posts = new WP_Query( $args );		
@@ -38,7 +35,7 @@
         <div class="container">
             <div class="row">
           <?php while ( $all_posts->have_posts() ) : $all_posts->the_post(); ?>	
-               <?php get_template_part( 'templates/partials/post-listing/posts/latest-maincategory' ); ?>
+     <?php get_template_part( 'templates/partials/post-listing/posts/latest/allcategory' ); ?>
           <?php endwhile; ?>
           <?php wp_reset_query() ?>
       </div>
@@ -54,6 +51,8 @@
         $args = array(
           'post_type' => 'post',
           'posts_per_page'  => 1,
+          'orderby' => 'publish_date',
+          'order' => 'ASC',
           'tax_query' => array(
             array(
               'taxonomy' => 'category',
@@ -69,7 +68,7 @@
              <div class="container">
               <div class="row">
           <?php while ( $posts->have_posts() ) : $posts->the_post(); ?>	
-         <?php get_template_part( 'templates/partials/post-listing/posts/latest-maincategory' ); ?>
+         <?php get_template_part( 'templates/partials/post-listing/posts/latest/maincategory' ); ?>
           <?php endwhile; ?>
           <?php wp_reset_query() ?>
       </div>

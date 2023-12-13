@@ -7,6 +7,11 @@ header {
     }
 
     .navbar-nav {
+      height: 60px;
+
+      @include media(">phone", "<=tablet") {
+          height: auto;
+        }
       #cssmenu {
         line-height: 1;
         display: block;
@@ -21,10 +26,8 @@ header {
             &:hover {
               >a {
                 &:after {
-                  top: 0;
-                  bottom: 0;
+                  display: none;
                 }
-
                 background: $black;
                 border-color: $black;
                 padding-bottom: 13px;

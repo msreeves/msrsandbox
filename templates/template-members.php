@@ -11,10 +11,8 @@ get_header();
 ?>
 <section>
   <div class="container">
-      <div class="post panel">
         <?php the_title( '<h1>', '</h1>' ); ?>
           <?php the_content(); ?>
-      </div> 
          <?php 	
       $args = array(
         'post_type' => 'member',
