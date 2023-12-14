@@ -17,7 +17,7 @@
       	'post_type' => 'post',
       	'posts_per_page' => 3,
         'offset' => 1, 
-        'category__not_in' => array( 10 ),
+        'category__not_in' => array( 6 ),
         'orderby' => 'publish_date',
         'order' => 'ASC',
       	'paged' => $paged

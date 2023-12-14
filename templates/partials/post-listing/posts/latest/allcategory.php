@@ -2,17 +2,17 @@
        <div class="row">
          <div class="col-lg-6"> 
         <div class="listing-image">
-    <?php
-if(in_category(6)){
-?>
-<span class="sponsored">This is sponsored content</span>
-<?php } ?> 
-            	<?php the_post_thumbnail(); ?>
+              <?php get_template_part( 'templates/partials/featured-image' ); ?>
             </div>
         </div>
          <div class="col-lg-6 d-flex flex-column"> 
             <div class="listing-text my-auto">
-                <p> <?php $exclude = array( 9 );
+                <?php
+if(in_category(6)){
+?>
+<span class="sponsored w-auto mb-5">This is sponsored content</span>
+<?php } ?> 
+                <p> <?php $exclude = array( 6 );
 
 // The categories list.
 $cat_list = array();

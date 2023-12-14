@@ -7,7 +7,7 @@ $venue = get_field('venue');
 <div class="post panel">
 <div class="row g-0 mb-5">
      <div class="col-md-6"> 
-            	<?php the_post_thumbnail(); ?>
+        <?php get_template_part( 'templates/partials/featured-image' ); ?>
       </div>
      <div class="col-md-6">
         <div class="p-5 text-center">
