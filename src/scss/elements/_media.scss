@@ -9,8 +9,12 @@ img {
         object-fit: cover;
         object-position: center;
         overflow: hidden;
-        height: 100vh;
+        height: 70vh;
         width: 100%;
+
+        @include media(">phone", "<=tablet") {
+                height: 40vh;
+            }
     }
 }
 
