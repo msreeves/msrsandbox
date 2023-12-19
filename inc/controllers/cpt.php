@@ -31,14 +31,6 @@ class New_Post_Types {
                 'menu_icon' => 'dashicons-format-image',
                 'public'    => false, 
             ],
-                 [
-                'post_type' => 'podcast',
-                'label'     => 'Podcast',
-                'singular'  => 'Episode',
-                'slug'      => 'episode',
-                'menu_icon' => 'dashicons-format-audio',
-                'public'    => false,
-            ],
 
                [
                 'post_type' => 'partner',
@@ -129,12 +121,6 @@ new New_Post_Types;
 function be_register_taxonomies() {
 
 	$taxonomies = array(
-           	array(
-			'slug'         => 'podcaster',
-			'single_name'  => 'Podcaster',
-			'plural_name'  => 'Podcaster',
-			'post_type'    => 'podcast',
-		),
           	array(
 			'slug'         => 'location',
 			'single_name'  => 'Location',

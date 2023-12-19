@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-<section>
+<section class="people">
   <div class="container">
         <?php the_title( '<h1>', '</h1>' ); ?>
           <?php the_content(); ?>
@@ -17,8 +17,9 @@ get_header();
       $args = array(
         'post_type' => 'member',
         'posts_per_page' => -1,
-        'orderby' => 'title',
-        'order' => 'ASC'
+        'meta_key'       => 'name',
+        'orderby'        => 'meta_value',
+        'order'          => 'ASC'
       );
       $all_partners = new WP_Query( $args );		
       ?>
