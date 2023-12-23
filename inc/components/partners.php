@@ -10,6 +10,7 @@
  
 <div class="container">
     <div class="row">   
+      <h1> Our Partners </h1>
          <?php 	
       $args = array(
         'post_type' => 'partner',
