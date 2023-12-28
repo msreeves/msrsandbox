@@ -1035,6 +1035,15 @@ article .listing-image img {
   width: 100%;
 }
 
+.publication .featured-media-inner img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 80vh;
+}
+.publication .panel button {
+  width: auto;
+}
+
 .partner-listing-image img {
   -o-object-fit: contain;
      object-fit: contain;

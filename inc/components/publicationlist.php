@@ -8,7 +8,7 @@
 
 ?>
 
- <section>
+ <section class="publication">
           <div class="container">
        <?php
        $args = [
