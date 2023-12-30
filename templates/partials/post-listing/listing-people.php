@@ -1,9 +1,9 @@
-    <div class="col-lg-4">
+    <div class="col-xl-4 col-lg-4 col-md-12">
       <div class="post panel">
         <div class="listing-image">
              <?php get_template_part( 'templates/partials/featured-image' ); ?>
         </div>
-               <div class="listing-text text-center">
+               <div class="listing-text my-auto text-center">
             <h2><?php the_title() ?></h2>
             <?php if ( get_field('job_title') ) : ?>
             <h3> <i class="fa fa-briefcase fa-xl" aria-hidden="true"></i> <?php print get_field('job_title') ?> </h3>

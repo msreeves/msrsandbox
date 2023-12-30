@@ -29,18 +29,44 @@ article {
     .listing-image {
         img {
             height: 100vh;
+
+            @include media(">phone", "<=tablet") {
+                height: 60vh;
+            }
         }
     }
 }
 
 .people {
-    .post {
+    .panel {
     .listing-image {
         img {
             height: 70vh;
-        }
-        }
 
+            @include media(">tablet", "<=desktop") {
+                    object-fit: contain;
+                    height: 40vh;
+                }
+
+            @include media(">phone", "<=tablet") {
+                    object-fit: contain;
+                    height: 40vh;
+                }
+        }
+        }
+    }
+}
+
+.latest {
+    .post {
+    .listing-image {
+    img {
+        @include media(">tablet", "<=desktop") {
+                height: 60vh;
+                width: 100%;
+            }
+    }
+}
     }
 }
 
@@ -50,6 +76,15 @@ article {
 
         img {
             transition: transform .5s ease;
+
+            @include media(">tablet", "<=desktop") {
+                    height: 40vh;
+                    width: 320px;
+                }
+            
+                @include media(">phone", "<=tablet") {
+                    height: 40vh;
+                }
         }
 
         &:hover {

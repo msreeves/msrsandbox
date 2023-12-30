@@ -1,11 +1,11 @@
 <div class="post panel"> 
        <div class="row">
-         <div class="col-lg-6"> 
+         <div class="col-xl-6 col-lg-6"> 
         <div class="listing-image">
               <?php get_template_part( 'templates/partials/featured-image' ); ?>
             </div>
         </div>
-         <div class="col-lg-6 d-flex flex-column"> 
+         <div class="col-xl-6 col-lg-6 d-flex flex-column"> 
             <div class="listing-text my-auto">
                 <?php
 if(in_category(6)){

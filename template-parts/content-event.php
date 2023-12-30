@@ -31,3 +31,18 @@
 <?php if ( get_field('image_gallery') ) : ?>
     <?php get_template_part( 'inc/components/gallery' ); ?>
      <?php endif; ?>
+         <?php
+
+if ((is_single() || is_page()) && (comments_open() || get_comments_number()) && !post_password_required())
+{
+?>
+
+		<div class="comments-wrapper section-inner">
+
+			<?php comments_template(); ?>
+
+		</div><!-- .comments-wrapper -->
+
+		<?php
+}
+?>

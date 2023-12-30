@@ -4,12 +4,12 @@ $time = get_field('time');
 $venue = get_field('venue');
 ?>
 
-<div class="post panel">
+<div class="event panel">
 <div class="row g-0 mb-5">
-     <div class="col-md-6"> 
+     <div class="col-xl-6 col-lg-6"> 
         <?php get_template_part( 'templates/partials/featured-image' ); ?>
       </div>
-     <div class="col-md-6">
+     <div class="col-xl-6 col-lg-6">
         <div class="p-5 text-center">
         <h1><?php the_title(); ?></h1>	
         <h2><?php echo $venue['name']; ?></h2>

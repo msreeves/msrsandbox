@@ -1,4 +1,4 @@
-         <div class="col-lg-3 col-md-6 mx-auto mb-3">
+         <div class="col-xl-3 col-md-6 mx-auto mb-3">
               <div class="panel">
                 <div class="partner-listing-image">
                <?php 

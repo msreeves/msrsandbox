@@ -3,7 +3,7 @@
 <div class="latest post-tabs">
   <?php $post_categories = get_categories('parent=0&exclude=6'); // get all the categories ?>
   <div class="row">
-  <div class="col-md-auto">
+  <div class="col-xl-auto col-lg-auto">
 
   <ul class="nav nav-tabs">
       <li class="active">
