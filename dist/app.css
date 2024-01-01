@@ -349,7 +349,6 @@ article .entry-content {
   width: calc(100% - 4rem);
   margin-left: auto;
   margin-right: auto;
-  padding: 3rem 0;
 }
 @media (min-width: 321px) and (max-width: 768px) {
   article .entry-content {
@@ -381,8 +380,10 @@ article .entry-content p {
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .post.panel .listing-text {
-    padding: 10px;
+    padding: 0 10px;
     width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 }
 
@@ -408,7 +409,7 @@ article .entry-content p {
 .panel span {
   background-color: #800020;
   color: #fff;
-  margin: 0 5px 0 0;
+  margin: 0 5px 10px 0;
   padding: 0 5px;
   font-size: 18px;
   display: inline-block;
@@ -503,8 +504,8 @@ span {
 }
 span.sponsored {
   text-transform: uppercase;
-  text-align: center;
-  width: 100%;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
 }
 
 button {
@@ -1069,22 +1070,6 @@ img {
   max-width: 100%;
 }
 
-.featured-media-inner img {
-  margin: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-  overflow: hidden;
-  height: 70vh;
-  width: 100%;
-}
-@media (min-width: 321px) and (max-width: 768px) {
-  .featured-media-inner img {
-    height: 40vh;
-  }
-}
-
 .background-image {
   background-position: center;
   background-size: cover;
@@ -1092,13 +1077,23 @@ img {
   width: 100%;
 }
 
-article .listing-image img {
-  height: 100vh;
+article .featured-media-inner img {
+  margin: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  overflow: hidden;
+  height: 80vh;
+  width: 100%;
 }
 @media (min-width: 321px) and (max-width: 768px) {
-  article .listing-image img {
-    height: 60vh;
+  article .featured-media-inner img {
+    height: 40vh;
   }
+}
+article .listing-image img {
+  height: 50vh;
 }
 
 .people .panel .listing-image img {

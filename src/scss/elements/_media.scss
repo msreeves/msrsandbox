@@ -3,21 +3,6 @@ img {
     max-width: 100%;
 }
 
-.featured-media-inner {
-    img {
-        margin: 0;
-        object-fit: cover;
-        object-position: center;
-        overflow: hidden;
-        height: 70vh;
-        width: 100%;
-
-        @include media(">phone", "<=tablet") {
-                height: 40vh;
-            }
-    }
-}
-
 .background-image {
     background-position: center;
     background-size: cover;
@@ -26,13 +11,23 @@ img {
 }
 
 article {
+    .featured-media-inner {
+            img {
+                margin: 0;
+                object-fit: cover;
+                object-position: center;
+                overflow: hidden;
+                height: 80vh;
+                width: 100%;
+    
+                @include media(">phone", "<=tablet") {
+                    height: 40vh;
+                }
+            }
+        }
     .listing-image {
         img {
-            height: 100vh;
-
-            @include media(">phone", "<=tablet") {
-                height: 60vh;
-            }
+            height: 50vh;
         }
     }
 }
