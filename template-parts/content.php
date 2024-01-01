@@ -84,5 +84,28 @@ if(in_category(10)){
 		?>
 		</section>
 	</div><!-- .entry-content -->
+	<?php $categories = get_the_category();
+foreach( $categories as $category ){
+    if( 0 != $category->parent )
+        $child_cat = $category;
+}
+
+if( isset( $child_cat ) ){  
+    echo '<h1>'. 'More stories in ' . $child_cat->name . '</h1>';
+    $args = array(
+        'cat' => $child_cat->term_id,
+        'post__not_in' => array( get_the_ID() )
+    );
+    $related = new WP_Query( $args );
+    if( $related->have_posts() ){
+		echo '<div class="row">';
+        while( $related->have_posts() ){
+            $related->the_post();
+                get_template_part( 'templates/partials/post-listing/posts/listing-posts' );
+        }
+        wp_reset_postdata();
+		echo '</div>';
+    }
+} ?>
 </article><!-- #post-<?php the_ID(); ?> -->
 </section>
