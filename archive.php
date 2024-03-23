@@ -29,11 +29,6 @@ get_header();
 			<div class="post panel">  
         <div class="listing-image"> 
            <?php get_template_part( 'templates/partials/featured-image' ); ?>
-						         <?php
-if(in_category(6)){
-?>
-<span class="sponsored">This is Sponsored content</span>
-<?php } ?>   
             </div>
             <div class="listing-text my-auto">
               <p>   <?php
@@ -49,7 +44,12 @@ if( $terms && ! is_wp_error( $terms ) ){
 } ?>
 
                  </p>  
-            <h3><?php the_title() ?></h3>              
+            <h3><?php the_title() ?></h3>   
+						         <?php
+if(in_category(6)){
+?>
+<span class="sponsored">This is Sponsored content</span>
+<?php } ?>              
                      <p><?php echo wpse_custom_excerpts(30); ?></p>
                       <a href="<?php echo the_permalink(); ?>"><button>Read more</button></a>
                     </div>
