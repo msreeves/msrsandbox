@@ -9,11 +9,11 @@
       <li class="active">
       <a href="#all" data-bs-toggle="tab" role="tab" aria-controls="all" aria-selected="all"><button><?php echo $post_category->name ?>Latest</button></a>
     </li>
-    <?php foreach($post_categories as $post_category) { ?>
+   	<?php foreach($post_categories as $post_category)  : ?>
       <li>
         <a href="#<?php echo $post_category->slug ?>" data-bs-toggle="tab"><button><?php echo $post_category->name ?></button></a>
       </li>
-    <? } ?>
+      <?php endforeach ?>
   </ul>
     </div>
 <div class="col">
@@ -44,7 +44,7 @@
 
     </div>
 
-    <?php foreach($post_categories as $post_category) { ?>
+    <?php foreach($post_categories as $post_category) : ?>
 
       <div class="tab-pane fade" id="<?php echo $post_category->slug ?>">
         <?php 	
@@ -76,7 +76,7 @@
         <?php endif; ?>
 
       </div>
-    <? }  ?>
+      <?php endforeach  ?>
 
   </div>
       </div>

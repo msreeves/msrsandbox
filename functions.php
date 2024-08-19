@@ -181,23 +181,3 @@ add_filter('get_the_terms', function ($terms, $post_id, $taxonomy) {
     }
     return $terms;
 }, 100, 3);
-
-function get_breadcrumb() {
-    echo '<a href="'.home_url().'" rel="nofollow"><i class="fa fa-home" aria-hidden="true"></i></a>';
-    if (is_category() || is_single()) {
-        echo '|';
-        the_category('|');
-            if (is_single()) {
-                echo '|';
-                the_title();
-            }
-    } elseif (is_page()) {
-        echo '|';
-        echo the_title();
-    } elseif (is_search()) {
-        echo '|'.'Search Results for...';
-        echo '"<em>';
-        echo the_search_query();
-        echo '</em>"';
-    }
-}

@@ -4,6 +4,7 @@ class New_Post_Types {
     public function __construct() {
         add_action( 'init', array( $this, 'all_post_types' ) );
     }
+    
 
     public function all_post_types() {
         $post_types = [
@@ -65,13 +66,13 @@ class New_Post_Types {
         $singular  = $data['singular'];
         $label   = $data['label'];
         $post_type = $data['post_type'];
-        $slug      = $data['slug'];
         $dashicon  = $data['menu_icon'];
         $trueorfalse  = $data['public'];
 
         $labels = array(
             'name'               => _x( $label, 'post type general name', 'sandbox-theme' ),
             'singular_name'      => _x( $singular, 'post type singular name', 'sandbox-theme' ),
+            'plural_name'        => _x( $plural, 'post type plural name', 'sandbox-theme' ),
             'menu_name'          => _x( $label, 'admin menu', 'sandbox-theme' ),
             'name_admin_bar'     => _x( $singular, 'add new on admin bar', 'sandbox-theme' ),
             'add_new'            => _x( 'Add New', $singular, 'sandbox-theme' ),

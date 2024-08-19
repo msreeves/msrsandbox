@@ -43,11 +43,6 @@
         </div>
     </nav>
 	</header>
-    <?php if (is_page( 37 )) : ?>
-        <?php else : ?>
-<div class="breadcrumb">  <div class="container"><?php get_breadcrumb(); ?></div>
-        </div>
-<?php endif; ?>
 
 
     
