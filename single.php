@@ -10,13 +10,13 @@ get_header();
 ?>
 
 <main id="site-content">
-    <div class="container">
 
 	<?php
 
 	if ( have_posts() ) {
 
 		while ( have_posts() ) {
+			the_breadcrumb();
 			the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );
@@ -24,7 +24,6 @@ get_header();
 	}
 
 	?>
-</div>
 </main><!-- #site-content -->
 
 <?php

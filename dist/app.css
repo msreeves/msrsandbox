@@ -510,6 +510,30 @@ article .entry-content p {
   display: none;
 }
 
+.breadcrumbs {
+  background-color: #f2f2f2;
+  padding: 10px 0;
+}
+.breadcrumbs span {
+  font-family: "Italiana", serif;
+  letter-spacing: 0.04em;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0.5rem;
+}
+.breadcrumbs span a {
+  color: #000;
+  text-decoration: none;
+}
+.breadcrumbs span a::after {
+  margin-left: 0.25em;
+  font-size: 0.8em;
+  vertical-align: middle;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f061";
+}
+
 body {
   margin: 0;
   color: #000;

@@ -9,6 +9,7 @@
 	define( '_S_VERSION', '1.0.0' );
 }
 
+require_once('inc/controllers/breadcrumbs.php');
 require_once('inc/controllers/cpt.php');
 require_once('inc/controllers/cpt-admin.php');
 require_once('inc/controllers/search.php');

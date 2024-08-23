@@ -43,6 +43,10 @@
         </div>
     </nav>
 	</header>
+    <?php if( is_category() ): ?>
+      <?php the_breadcrumb(); ?>
+<?php endif; ?>
+
 
 
     
